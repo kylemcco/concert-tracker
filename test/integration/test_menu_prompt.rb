@@ -39,7 +39,7 @@ require_relative '../test_helper'
 # Concert saved.
 # </pre></code>
 
-class TestAddingConcertWithInitialArgument < MiniTest::Test
+class TestMenuPromptWithInitialArgument < MiniTest::Test
 
   def test_minimum_arguments_required
     shell_output = ""
