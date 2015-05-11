@@ -39,45 +39,62 @@ require_relative '../test_helper'
 # Concert saved.
 # </pre></code>
 
-class TestAddingConcert < MiniTest::Test
+class TestAddingConcertWithInitialArgument < MiniTest::Test
 
-  def test_initial_prompt
+  def test_minimum_arguments_required
     shell_output = ""
     expected = ""
     IO.popen('./concert-tracker', 'r+') do |pipe|
       pipe.close_write
       shell_output = pipe.read
     end
-    expected << <<-EOS
-    1. Add a concert
-    2. Manage concerts
-    3. View statistics
-    4. Exit
-EOS
+    expected = "[Help] Run as: ./concert-tracker manage"
     assert_equal expected, shell_output
   end
 
-  def test_no_input_after_prompt
+  def test_manage_argument_not_given
     shell_output = ""
     expected = ""
-    IO.popen('./concert-tracker', 'r+') do |pipe|
+    IO.popen('./concert-tracker blah', 'r+') do |pipe|
+      pipe.close_write
+      shell_output = pipe.read
+    end
+    expected = "[Help] Run as: ./concert-tracker manage"
+    assert_equal expected, shell_output
+  end
+
+  def test_manage_argument_given
+    shell_output = ""
+    expected = ""
+    IO.popen('./concert-tracker manage', 'r+') do |pipe|
       pipe.puts ""
       pipe.close_write
       shell_output = pipe.read
     end
-    expected << "[Help] I didn't understand that, please type a number 1-4"
+    expected = <<EOS
+1. Add a concert
+2. Manage concerts
+3. View statistics
+4. Exit
+EOS
     assert_equal expected, shell_output
   end
 
-  def test_select_add_concert
+  def test_program_can_exit
     shell_output = ""
     expected = ""
-    IO.popen('./concert-tracker', 'r+') do |pipe|
-      pipe.puts "1"
+    IO.popen('./concert-tracker manage', 'r+') do |pipe|
+      pipe.puts "4"
       pipe.close_write
       shell_output = pipe.read
     end
-    expected << "Who was the headlining act?"
+    expected = <<EOS
+1. Add a concert
+2. Manage concerts
+3. View statistics
+4. Exit
+EOS
+    expected << "Welp, seeya later"
     assert_equal expected, shell_output
   end
 
