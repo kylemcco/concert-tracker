@@ -17,6 +17,7 @@ Usage example:
 3. View statistics
 4. Exit
 &gt; 1  
+Answer the following questions about the concert:  
 Who was the headlining act?  
 &gt; Wilco  
 Do you want to add a genre? (y/n)  
