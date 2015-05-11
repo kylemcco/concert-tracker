@@ -2,7 +2,7 @@ require_relative '../test_helper'
 
 class TestEditConcert < MiniTest::Test
 
-  def test_select_add_concert
+  def test_select_manage_concerts
     shell_output = ""
     expected = ""
     IO.popen('./concert-tracker manage', 'r+') do |pipe|

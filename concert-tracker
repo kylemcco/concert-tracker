@@ -9,10 +9,10 @@ elsif ARGV.length == 1
   else
     choose do |menu|
       menu.prompt = ""
-      
-      menu.choice('Add a concert') { say("Not available yet") }
-      menu.choice('Manage concerts') { say("Not available yet") }
-      menu.choice('View statistics') { say("Not available yet") }
+
+      menu.choice('Add a concert') { say("Answer the following questions about the concert:\nWho was the headlining act?\n") }
+      menu.choice('Manage concerts') { say("No concerts to edit. Add concerts.\n") }
+      menu.choice('View statistics') { say("No concert data available. Add concerts.\n") }
       menu.choice('Exit') { say("Welp, seeya later\n") }
     end
   end

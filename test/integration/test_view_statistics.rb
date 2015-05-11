@@ -1,13 +1,12 @@
 require_relative '../test_helper'
 
-class TestDeleteConcert < MiniTest::Test
+class TestViewStatistics < MiniTest::Test
 
-  def test_select_delete_concert
+  def test_select_view_statistics
     shell_output = ""
     expected = ""
     IO.popen('./concert-tracker manage', 'r+') do |pipe|
       pipe.puts "3"
-      pipe.puts "6"
       pipe.close_write
       shell_output = pipe.read
     end
@@ -17,16 +16,8 @@ class TestDeleteConcert < MiniTest::Test
 3. View statistics
 4. Exit
 EOS
-    expected << <<-EOS
-    1. Edit headliner
-    2. Edit opening act(s)
-    3. Edit venue
-    4. Edit city/state
-    5. Edit rating
-    6. Delete concert
-    7. Exit
-EOS
-    expected << "Select a concert to delete:"
+    expected << "No concert data available. Add concerts.\n"
+
     assert_equal expected, shell_output
   end
 
