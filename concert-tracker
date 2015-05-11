@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+require 'highline/import'
 
 if ARGV.length < 1
   print "[Help] Run as: ./concert-tracker manage"
@@ -6,11 +7,13 @@ elsif ARGV.length == 1
   if ARGV[0] != 'manage'
     print "[Help] Run as: ./concert-tracker manage"
   else
-    print <<-EOS
-1. Add a concert
-2. Manage concerts
-3. View statistics
-4. Exit
-EOS
+    choose do |menu|
+      menu.prompt = ""
+      
+      menu.choice('Add a concert') { say("Not available yet") }
+      menu.choice('Manage concerts') { say("Not available yet") }
+      menu.choice('View statistics') { say("Not available yet") }
+      menu.choice('Exit') { say("Welp, seeya later\n") }
+    end
   end
 end

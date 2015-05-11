@@ -67,7 +67,6 @@ class TestAddingConcertWithInitialArgument < MiniTest::Test
     shell_output = ""
     expected = ""
     IO.popen('./concert-tracker manage', 'r+') do |pipe|
-      pipe.puts ""
       pipe.close_write
       shell_output = pipe.read
     end
@@ -94,7 +93,7 @@ EOS
 3. View statistics
 4. Exit
 EOS
-    expected << "Welp, seeya later"
+    expected << "Welp, seeya later\n"
     assert_equal expected, shell_output
   end
 
