@@ -45,11 +45,11 @@ Cool! You saw Wilco play The Ryman in Nashville, TN on 10/02/2011. Nick Lowe ope
 Concert saved.  
 </pre></code>
 
-Acceptance criteria:
-1. Program prints confirmation that concert was added
-2. Concert is added to the database
-3. After being added, the concert will be visible via "View statistics" once that feature is implemented
-4. After the addition the user is taken back to the main menu
+Acceptance criteria:  
+1. Program prints confirmation that concert was added  
+2. Concert is added to the database  
+3. After being added, the concert will be visible via "View statistics" once that feature is implemented  
+4. After the addition the user is taken back to the main menu  
 
 ### Editing an existing concert
 In order to correct mistakes in previously recorded concerts I want to edit existing concert entries.
@@ -92,11 +92,11 @@ You saw Wilco play The Ryman in Nashville, TN on 10/02/2011. Nick Lowe opened. Y
 &gt; 6
 </pre></code>
 
-Acceptance criteria:
-1. Program prints confirmation that concert was edited
-2. Concert information is edited in the database
-3. After being edited, the new concert data will be visible via "View statistics" once that feature is implemented
-4. After the edit the user is taken back to the main menu
+Acceptance criteria:  
+1. Program prints confirmation that concert was edited  
+2. Concert information is edited in the database  
+3. After being edited, the new concert data will be visible via "View statistics" once that feature is implemented  
+4. After the edit the user is taken back to the main menu  
 
 ### Deleting a concert
 In order to remove incorrect entries or unmemorable concerts I want to delete existing concert entries.
@@ -131,11 +131,11 @@ Are you sure you want to delete this concert? (y/n)
 Concert deleted.  
 </pre></code>
 
-Acceptance criteria:
-1. Program prints confirmation that concert was deleted
-2. Concert information is deleted from the database
-3. After being deleted, the concert data will not be visible via "View statistics" once that feature is implemented
-4. After the deletion the user is taken back to the main menu
+Acceptance criteria:  
+1. Program prints confirmation that concert was deleted  
+2. Concert information is deleted from the database  
+3. After being deleted, the concert data will not be visible via "View statistics" once that feature is implemented  
+4. After the deletion the user is taken back to the main menu  
 
 ### Viewing statistics based on existing concert data
 In order to view my concert-going habits and retrieve memories I want to view useful information derived from existing concert entries.
@@ -169,3 +169,7 @@ Select artist:
 &gt; 1  
 You have seen Andrew Bird 5 times. Based on your concert ratings Andew Bird ranks &#35;2 of all the artists you've seen.
 </pre></code>
+
+Acceptance criteria:  
+1. Program prints statistics based on database data  
+2. After viewing statistics the user is taken back to the main menu  
