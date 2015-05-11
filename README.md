@@ -2,15 +2,12 @@
 A simple application for recording concerts attended to a database.
 
 ## Project vision
-This will be a small command-line program that asks the user to record details about concerts he or she has attended.
-
-Users will be able to add/edit/delete concert entries, as well as get statistics about their concert history.
+This will be a small command-line program that asks the user to record details about concerts he or she has attended. Users will be able to add/edit/delete concert entries, as well as get statistics about their concert history.
 
 ## Features
 
 ### Adding a concert
-In order to catalog concerts attended  
-I want to add concert data.
+In order to catalog concerts attended I want to add concert data.
 
 Usage example:
 <pre><code>
@@ -49,8 +46,7 @@ Concert saved.
 </pre></code>
 
 ### Editing an existing concert
-In order to correct mistakes in previously recorded concerts  
-I want to edit existing concert entries.
+In order to correct mistakes in previously recorded concerts I want to edit existing concert entries.
 
 Usage example:
 <pre><code>
@@ -91,8 +87,7 @@ You saw Wilco play The Ryman in Nashville, TN on 10/02/2011. Nick Lowe opened. Y
 </pre></code>
 
 ### Deleting a concert
-In order to remove incorrect entries or unmemorable concerts  
-I want to delete existing concert entries.
+In order to remove incorrect entries or unmemorable concerts I want to delete existing concert entries.
 
 Usage example:
 <pre><code>
@@ -125,8 +120,7 @@ Concert deleted.
 </pre></code>
 
 ### Viewing statistics based on existing concert data
-In order to view my concert-going habits and retrieve memories  
-I want to view useful information derived from existing concert entries.
+In order to view my concert-going habits and retrieve memories I want to view useful information derived from existing concert entries.
 
 Usage example:
 <pre><code>
@@ -155,5 +149,5 @@ Select artist:
 3. St. Vincent  
 4. Wilco  
 &gt; 1  
-You have seen Andrew Bird 5 times. Your average rating of Andew Bird ranks this artist 2/20 of all the shows you've seen.
+You have seen Andrew Bird 5 times. Your average rating of Andew Bird ranks this artist &pound;2 of all the shows you've seen.
 </pre></code>
