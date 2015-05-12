@@ -9,7 +9,7 @@ class TestMenuPromptWithInitialArgument < MiniTest::Test
       pipe.close_write
       shell_output = pipe.read
     end
-    expected = "[Help] Run as: ./concert-tracker manage"
+    expected = "[Help] Run as: ./concert-tracker manage\n"
     assert_equal expected, shell_output
   end
 
@@ -20,7 +20,7 @@ class TestMenuPromptWithInitialArgument < MiniTest::Test
       pipe.close_write
       shell_output = pipe.read
     end
-    expected = "[Help] Run as: ./concert-tracker manage"
+    expected = "[Help] Run as: ./concert-tracker manage\n"
     assert_equal expected, shell_output
   end
 
