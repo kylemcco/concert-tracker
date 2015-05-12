@@ -52,8 +52,8 @@ Acceptance criteria:
 3. After being added, the concert will be visible via "View statistics" once that feature is implemented  
 4. After the addition the user is taken back to the main menu  
 
-### Editing an existing concert
-In order to correct mistakes in previously recorded concerts I want to edit existing concert entries.
+### Manage an existing concert
+In order to edit or delete concerts I want to manage existing concert entries.
 
 Usage example:
 <pre><code>
