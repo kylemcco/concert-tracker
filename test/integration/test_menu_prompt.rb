@@ -31,12 +31,7 @@ class TestMenuPromptWithInitialArgument < MiniTest::Test
       pipe.close_write
       shell_output = pipe.read
     end
-    expected = <<EOS
-1. Add a concert
-2. Manage concerts
-3. View statistics
-4. Exit
-EOS
+    expected << main_menu
     assert_equal expected, shell_output
   end
 
@@ -48,12 +43,7 @@ EOS
       pipe.close_write
       shell_output = pipe.read
     end
-    expected = <<EOS
-1. Add a concert
-2. Manage concerts
-3. View statistics
-4. Exit
-EOS
+    expected << main_menu
     expected << "Welp, seeya later\n"
     assert_equal expected, shell_output
   end
@@ -66,12 +56,7 @@ EOS
       pipe.close_write
       shell_output = pipe.read
     end
-    expected = <<EOS
-1. Add a concert
-2. Manage concerts
-3. View statistics
-4. Exit
-EOS
+    expected << main_menu
     expected << "No data available. Add concerts.\n"
     assert_equal expected, shell_output
   end
