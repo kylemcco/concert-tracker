@@ -2,32 +2,21 @@ require_relative '../test_helper'
 
 class TestMenuPromptWithInitialArgument < MiniTest::Test
 
-  def test_minimum_arguments_required
-    shell_output = ""
-    expected = ""
-    IO.popen('./concert-tracker', 'r+') do |pipe|
-      pipe.close_write
-      shell_output = pipe.read
-    end
-    expected = "[Help] Run as: ./concert-tracker manage\n"
-    assert_equal expected, shell_output
-  end
-
-  def test_manage_argument_not_given
+  def test_manage_argument_given
     shell_output = ""
     expected = ""
     IO.popen('./concert-tracker blah', 'r+') do |pipe|
       pipe.close_write
       shell_output = pipe.read
     end
-    expected = "[Help] Run as: ./concert-tracker manage\n"
+    expected = "[Help] Run as: ./concert-tracker\n"
     assert_equal expected, shell_output
   end
 
-  def test_manage_argument_given
+  def test_manage_no_argument_given
     shell_output = ""
     expected = ""
-    IO.popen('./concert-tracker manage', 'r+') do |pipe|
+    IO.popen('./concert-tracker', 'r+') do |pipe|
       pipe.close_write
       shell_output = pipe.read
     end
@@ -38,7 +27,7 @@ class TestMenuPromptWithInitialArgument < MiniTest::Test
   def test_program_can_exit
     shell_output = ""
     expected = ""
-    IO.popen('./concert-tracker manage', 'r+') do |pipe|
+    IO.popen('./concert-tracker', 'r+') do |pipe|
       pipe.puts "4"
       pipe.close_write
       shell_output = pipe.read
@@ -52,7 +41,7 @@ class TestMenuPromptWithInitialArgument < MiniTest::Test
     skip
     shell_output = ""
     expected = ""
-    IO.popen('./concert-tracker manage', 'r+') do |pipe|
+    IO.popen('./concert-tracker', 'r+') do |pipe|
       pipe.puts "3"
       pipe.close_write
       shell_output = pipe.read

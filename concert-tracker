@@ -4,10 +4,10 @@ Dir["./app/**/*.rb"].each { |f| require f }
 Dir["./lib/*.rb"].each { |f| require f }
 
 def print_error_message
-  puts "[Help] Run as: ./concert-tracker manage"
+  puts "[Help] Run as: ./concert-tracker"
 end
 
-if ARGV.size == 1 and ARGV[0] == 'manage'
+if ARGV.size == 0
   choose do |menu|
     menu.prompt = ""
     concerts_contoller = ConcertsController.new

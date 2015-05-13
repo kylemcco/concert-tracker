@@ -13,11 +13,6 @@ describe Concert do
         add_concert("Andrew Bird")
         add_concert("Neil Young")
       end
-      it "should return an array" do
-        # You don't need to be pedantic like this.
-        # This is just an example to remind you that you can use multiple "its"
-        assert_equal Array, Concert.all.class
-      end
       it "should return the concerts in alphabetical order" do
         expected = ["Andrew Bird", "Neil Young", "Wilco"]
         actual = Concert.all.map{ |concert| concert.name }

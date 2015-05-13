@@ -43,7 +43,7 @@ class TestViewStatistics < MiniTest::Test
   def test_viewing_statistics_no_concerts
     shell_output = ""
     expected_output = ""
-    IO.popen('./concert-tracker manage', 'r+') do |pipe|
+    IO.popen('./concert-tracker', 'r+') do |pipe|
       expected_output << main_menu
       pipe.puts "3"
       expected_output << "No concerts found. Add a concert.\n"
@@ -58,7 +58,7 @@ class TestViewStatistics < MiniTest::Test
     add_concert("Andrew Bird")
     shell_output = ""
     expected_output = ""
-    IO.popen('./concert-tracker manage', 'r+') do |pipe|
+    IO.popen('./concert-tracker', 'r+') do |pipe|
       expected_output << main_menu
       pipe.puts "3" # View statistics
       expected_output << "1. Andrew Bird\n"
