@@ -10,29 +10,10 @@ end
 if ARGV.size == 1 and ARGV[0] == 'manage'
   choose do |menu|
     menu.prompt = ""
+    concerts_contoller = ConcertsController.new
     menu.choice('Add a concert') { say("Answer the following questions about the concert:\nWho was the headlining act?\n") }
-    menu.choice('Manage concerts') {
-      choose do |submenu|
-        submenu.prompt = ""
-        submenu.choice('Edit headliner') { say("No concert data available. Add concerts.\n") }
-        submenu.choice('Edit opening act(s)') { say("No concert data available. Add concerts.\n") }
-        submenu.choice('Edit venue') { say("No concert data available. Add concerts.\n") }
-        submenu.choice('Edit city/state') { say("No concert data available. Add concerts.\n") }
-        submenu.choice('Edit rating') { say("No concert data available. Add concerts.\n") }
-        submenu.choice('Delete concert') { say("No concert data available. Add concerts.\n") }
-        submenu.choice('Exit') { say("Going back now\n") }
-      end
-    }
-    menu.choice('View statistics') {
-      choose do |submenu|
-        submenu.prompt = ""
-        submenu.choice('General stats') { say("No concert data available. Add concerts.\n") }
-        submenu.choice('Artist stats') { say("No concert data available. Add concerts.\n") }
-        submenu.choice('Venue stats') { say("No concert data available. Add concerts.\n") }
-        submenu.choice('Year stats') { say("No concert data available. Add concerts.\n") }
-        submenu.choice('Exit') { say("Going back now\n") }
-      end
-    }
+    menu.choice('Manage concerts') { say("") }
+    menu.choice('View statistics') { concerts_contoller.index }
     menu.choice('Exit') { say("Welp, seeya later\n") }
   end
 else
