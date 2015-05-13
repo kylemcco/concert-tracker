@@ -2,12 +2,14 @@ class ConcertsController
 
   def index
     if Concert.count > 0
-      concerts = Concert.all # All of the scenarios in an array
+      concerts = Concert.all
+      concerts_string = ""
       concerts.each_with_index do |concert, index|
-        say("#{index + 1}. #{concert.name}") #=> 1. Concert 1
+        concerts_string << "#{index + 1}. #{concert.name}\n"
       end
+      concerts_string
     else
-      say("No concerts found. Add a concert.\n")
+      "No concerts found. Add a concert.\n"
     end
   end
 
