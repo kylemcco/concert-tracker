@@ -28,13 +28,21 @@ def collect_concert_info
 end
 
 if ARGV.size == 0
-  choose do |menu|
-    menu.prompt = ""
-    concerts_contoller = ConcertsController.new
-    menu.choice('Add a concert') { collect_concert_info() }
-    menu.choice('Manage concerts') { say("") }
-    menu.choice('View statistics') { concerts_contoller.index }
-    menu.choice('Exit') { say("Welp, seeya later\n") }
+  loop do
+    choose do |menu|
+      menu.prompt = ""
+      concerts_contoller = ConcertsController.new
+      menu.choice('Add a concert') { collect_concert_info() }
+      menu.choice('Manage concerts') { say("") }
+      menu.choice('View statistics') {
+        say(concerts_contoller.index)
+        exit
+      }
+      menu.choice('Exit') {
+        say("Welp, seeya later\n")
+        exit
+      }
+    end
   end
 else
   print_error_message
