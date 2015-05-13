@@ -45,7 +45,7 @@ class TestDeleteConcert < MiniTest::Test
     skip
     shell_output = ""
     expected = ""
-    IO.popen('./concert-tracker', 'r+') do |pipe|
+    IO.popen('./concert_tracker', 'r+') do |pipe|
       pipe.puts "2"
       pipe.puts "6"
       pipe.close_write

@@ -53,7 +53,7 @@ class TestManageConcert < MiniTest::Test
     skip
     shell_output = ""
     expected = ""
-    IO.popen('./concert-tracker', 'r+') do |pipe|
+    IO.popen('./concert_tracker', 'r+') do |pipe|
       pipe.puts "2"
       pipe.close_write
       shell_output = pipe.read

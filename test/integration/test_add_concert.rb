@@ -51,7 +51,7 @@ class TestAddConcert < MiniTest::Test
   def test_select_add_concert
     shell_output = ""
     expected = ""
-    IO.popen('./concert-tracker', 'r+') do |pipe|
+    IO.popen('./concert_tracker', 'r+') do |pipe|
       pipe.puts "1"
       pipe.close_write
       shell_output = pipe.read

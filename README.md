@@ -1,4 +1,4 @@
-# concert-tracker
+# concert_tracker
 A simple application for recording concerts attended to a database.
 
 ## Project vision
