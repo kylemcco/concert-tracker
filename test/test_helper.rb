@@ -2,9 +2,24 @@ require 'rubygems'
 require 'bundler/setup'
 require 'minitest/autorun'
 require 'minitest/reporters'
+Dir["./app/**/*.rb"].each { |f| require f }
+Dir["./lib/*.rb"].each { |f| require f }
+ENV["TEST"] = "true"
 
 reporter_options = {color: true}
 Minitest::Reporters::use! [Minitest::Reporters::DefaultReporter.new(reporter_options)]
+
+require 'minitest/autorun'
+class Minitest::Test
+  def setup
+    Database.load_structure
+    Database.execute("DELETE FROM concerts;")
+  end
+end
+
+def add_concert(name)
+  Database.execute("INSERT INTO concerts (name) VALUES (?)", name)
+end
 
 def main_menu
 <<EOS
