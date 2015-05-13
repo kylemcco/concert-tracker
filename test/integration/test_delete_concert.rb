@@ -42,6 +42,7 @@ require_relative '../test_helper'
 class TestDeleteConcert < MiniTest::Test
 
   def test_select_delete_concert
+    skip
     shell_output = ""
     expected = ""
     IO.popen('./concert-tracker manage', 'r+') do |pipe|
