@@ -49,6 +49,7 @@ class TestMenuPromptWithInitialArgument < MiniTest::Test
   end
 
   def test_no_concerts_found
+    skip
     shell_output = ""
     expected = ""
     IO.popen('./concert-tracker manage', 'r+') do |pipe|

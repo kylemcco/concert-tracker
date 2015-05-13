@@ -45,11 +45,12 @@ require_relative '../test_helper'
 # 1. Program prints confirmation that concert was edited
 # 2. Concert information is edited in the database
 # 3. After being edited, the new concert data will be visible via "View statistics" once that feature is implemented
-# 4. After the edit the user is taken back to the main menu  
+# 4. After the edit the user is taken back to the main menu
 
 class TestManageConcert < MiniTest::Test
 
   def test_select_manage_concerts
+    skip
     shell_output = ""
     expected = ""
     IO.popen('./concert-tracker manage', 'r+') do |pipe|
