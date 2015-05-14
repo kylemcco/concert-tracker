@@ -13,8 +13,9 @@ if ARGV.size == 0
     choose do |menu|
       menu.prompt = ""
       concerts_controller = ConcertsController.new
+      concert_questions_controller = ConcertQuestionsController.new
       menu.choice('Add a concert') {
-        say(concerts_controller.collect_concert_info)
+        say(concert_questions_controller.ask_questions)
         exit
       }
       menu.choice('Manage concerts') { say("") }
