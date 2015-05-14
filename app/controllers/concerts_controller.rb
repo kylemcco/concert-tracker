@@ -17,7 +17,10 @@ class ConcertsController
     concert_info = Hash.new
     concerts_controller = ConcertsController.new
     say("Answer the following questions about the concert:\n")
-    concert_info["artist"] = ask("Who was the headlining act?")
+    concert_info["artist"] = ask("Who was the headlining act?") {
+      |q| q.validate = lambda { |p| p != "" };
+      q.responses[:not_valid] = "Headliner cannot be empty. Please enter the headlining act."
+    }
     # openers_choice = ask("Were there any noteworthy openers? (y/n)")
     # if openers_choice == "y"
     #   openers = ask("List the opening act(s), seperated by commas (KISS,Meatloaf)").split(",")
@@ -34,7 +37,6 @@ class ConcertsController
     else
       puts "Let's try again"
     end
-
   end
 
   def add(concert_info)
