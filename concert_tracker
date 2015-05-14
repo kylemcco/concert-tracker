@@ -7,35 +7,18 @@ def print_error_message
   puts "[Help] Run as: ./concert_tracker"
 end
 
-def collect_concert_info
-  say("Answer the following questions about the concert:\n")
-  concert = ask("Who was the headlining act?")
-  openers_choice = ask("Were there any noteworthy openers? (y/n)")
-  if openers_choice == "y"
-    openers = ask("List the opening act(s), seperated by commas (KISS,Meatloaf)").split(",")
-  end
-  date = ask("When was the concert? (mm/dd/yyyy)")
-  venue = ask("What was the name of the venue?")
-  location = ask("Where is the venue located? (City, ST)")
-  rating = ask("Rate your experience on a scale of 1-10")
-  confirmation = ask("Cool! You saw #{headliner} play #{venue} in #{location} on #{date}. The opener(s) included #{openers.join(", ")}. You gave this show a #{rating}. Is that correct? (y/n)")
-  if confirmation == "y"
-    puts "Concert saved"
-  else
-    puts "Let's try again"
-  end
-
-end
-
 if ARGV.size == 0
   loop do
     choose do |menu|
       menu.prompt = ""
-      concerts_contoller = ConcertsController.new
-      menu.choice('Add a concert') { collect_concert_info() }
+      concerts_controller = ConcertsController.new
+      menu.choice('Add a concert') {
+        say(concerts_controller.collect_concert_info)
+        exit
+      }
       menu.choice('Manage concerts') { say("") }
       menu.choice('View statistics') {
-        say(concerts_contoller.index)
+        say(concerts_controller.index)
         exit
       }
       menu.choice('Exit') {
