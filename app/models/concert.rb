@@ -1,5 +1,5 @@
 class Concert
-  attr_accessor :artist
+  attr_accessor :artist, :concert_date, :venue, :location, :rating
 
   def self.all
     Database.execute("select artist from concerts order by artist ASC").map do |row|
