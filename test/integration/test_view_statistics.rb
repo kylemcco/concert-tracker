@@ -54,14 +54,14 @@ class TestViewStatistics < MiniTest::Test
   end
 
   def test_viewing_statistics_multiple_concerts
-    add_concert("Wilco")
-    add_concert("Andrew Bird")
+    add_concert({"artist"=>"Wilco", "concert_date"=>"02/02/2000", "venue"=>"The Ryman", "location"=>"Nashville, TN", "rating"=>"10"})
+    add_concert({"artist"=>"Neil Young", "concert_date"=>"02/02/2000", "venue"=>"The Ryman", "location"=>"Nashville, TN", "rating"=>"10"})
     shell_output = ""
     expected_output = ""
     IO.popen('./concert_tracker', 'r+') do |pipe|
       expected_output << main_menu
       pipe.puts "3" # View statistics
-      expected_output << "1. Andrew Bird\n"
+      expected_output << "1. Neil Young\n"
       expected_output << "2. Wilco\n"
       pipe.close_write
       shell_output = pipe.read
