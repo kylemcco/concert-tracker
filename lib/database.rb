@@ -6,7 +6,11 @@ class Database
     Database.execute <<-SQL
     CREATE TABLE IF NOT EXISTS concerts (
       id integer PRIMARY KEY AUTOINCREMENT,
-      name varchar(255) NOT NULL
+      artist varchar(255) NOT NULL,
+      concert_date varchar(255) NOT NULL,
+      venue varchar(255) NOT NULL,
+      location varchar(255) NOT NULL,
+      rating varchar(255) NOT NULL
     );
     SQL
   end

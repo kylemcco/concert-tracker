@@ -5,7 +5,7 @@ class ConcertsController
       concerts = Concert.all
       concerts_string = ""
       concerts.each_with_index do |concert, index|
-        concerts_string << "#{index + 1}. #{concert.name}\n"
+        concerts_string << "#{index + 1}. #{concert.artist}\n"
       end
       concerts_string
     else
