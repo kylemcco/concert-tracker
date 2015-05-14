@@ -38,7 +38,6 @@ class TestMenuPromptWithInitialArgument < MiniTest::Test
   end
 
   def test_no_concerts_found
-    skip
     shell_output = ""
     expected = ""
     IO.popen('./concert_tracker', 'r+') do |pipe|
@@ -47,7 +46,7 @@ class TestMenuPromptWithInitialArgument < MiniTest::Test
       shell_output = pipe.read
     end
     expected << main_menu
-    expected << "No data available. Add concerts.\n"
+    expected << "No concerts found. Add a concert.\n"
     assert_equal expected, shell_output
   end
 
