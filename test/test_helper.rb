@@ -2,6 +2,7 @@ require 'rubygems'
 require 'bundler/setup'
 require 'minitest/autorun'
 require 'minitest/reporters'
+
 Dir["./app/**/*.rb"].each { |f| require f }
 Dir["./lib/*.rb"].each { |f| require f }
 ENV["TEST"] = "true"

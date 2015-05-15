@@ -38,4 +38,16 @@ describe Concert do
       end
     end
   end
+
+  describe "#save" do
+    describe "if we want to save a concert to the database" do
+      before do
+        Concert.save({"artist"=>"Wilco", "concert_date"=>"02/02/2000", "venue"=>"The Ryman", "location"=>"Nashville, TN", "rating"=>"10"})
+      end
+      it "should add a concert" do
+        assert_equal 1, Concert.count
+      end
+    end
+  end
+
 end
