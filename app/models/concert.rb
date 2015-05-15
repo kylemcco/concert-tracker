@@ -34,8 +34,8 @@ class Concert
   end
 
   def self.validate_location(input)
-    input.validate = lambda { |p| p != "" };
-    input.responses[:not_valid] = "Enter location in City, ST format (example: Nashville, TN)"
+    input.validate = /^(.+)+,[ ]?[A-Za-z]{2}$/
+    input.responses[:not_valid] = "Enter location in City, ST format (example: Nashville, TN)."
   end
 
   def self.validate_rating(input)
