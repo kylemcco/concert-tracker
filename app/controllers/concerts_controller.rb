@@ -14,7 +14,7 @@ class ConcertsController
   end
 
   def add(concert_info)
-    Concert.save(concert_info)
+    Concert.new(concert_info).save
   end
 
 end

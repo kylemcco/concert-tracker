@@ -1,5 +1,19 @@
-class Concert
+class Concert < Struct.new(:artist, :concert_date, :venue, :location, :rating)
   attr_accessor :artist, :concert_date, :venue, :location, :rating
+
+  # def initialize(h = nil)
+  #     super(*h.values_at(:artist, :concert_date, :venue, :location, :rating))
+  # end
+
+  def initialize(attrs = nil)
+    if !attrs.nil?
+      self.artist = attrs["artist"]
+      self.concert_date = attrs["concert_date"]
+      self.venue = attrs["venue"]
+      self.location = attrs["location"]
+      self.rating = attrs["rating"]
+    end
+  end
 
   def self.all
     Database.execute("select artist from concerts order by artist ASC").map do |row|
@@ -13,10 +27,15 @@ class Concert
     Database.execute("select count(id) from concerts")[0][0]
   end
 
-  def self.save(concert_info)
+  def save
     Database.execute("INSERT INTO concerts (artist, concert_date, venue, location, rating)
-    VALUES (?, ?, ?, ?, ?)", concert_info["artist"], concert_info["concert_date"], concert_info["venue"], concert_info["location"], concert_info["rating"])
+    VALUES (?, ?, ?, ?, ?)", artist, concert_date, venue, location, rating)
   end
+
+  # def save
+  #   Database.execute("INSERT INTO concerts (artist, concert_date, venue, location, rating)
+  #   VALUES (?, ?, ?, ?, ?)", concert_info["artist"], concert_info["concert_date"], concert_info["venue"], concert_info["location"], concert_info["rating"])
+  # end
 
   def self.validate_artist(input)
     input.validate = lambda { |p| p != "" };
