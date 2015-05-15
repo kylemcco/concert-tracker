@@ -3,7 +3,7 @@ class ConcertQuestionsController
   def ask_questions
     concert_info = Hash.new
     say("Answer the following questions about the concert:\n")
-    ask("Who was the headlining act?") { |i| Concert.validate_artist(i) }
+    concert_info["artist"] = ask("Who was the headlining act?") { |i| Concert.validate_artist(i) }
     # openers_choice = ask("Were there any noteworthy openers? (y/n)")
     # if openers_choice == "y"
     #   openers = ask("List the opening act(s), seperated by commas (KISS,Meatloaf)").split(",")
