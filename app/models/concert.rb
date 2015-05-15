@@ -19,23 +19,28 @@ class Concert
   end
 
   def self.validate_artist(input)
-    lambda { |p| p != "" }
+    input.validate = lambda { |p| p != "" };
+    input.responses[:not_valid] = "Headliner cannot be empty."
   end
 
   def self.validate_date(input)
-    input = /(0[1-9]|1[012])[- \/](0[1-9]|[12][0-9]|3[01])[- \/](19|20)\d\d/;
+    input.validate = /(0[1-9]|1[012])[- \/](0[1-9]|[12][0-9]|3[01])[- \/](19|20)\d\d/;
+    input.responses[:not_valid] = "Invalid date. Enter date in MM/DD/YYYY format."
   end
 
   def self.validate_venue(input)
-    lambda { |p| p != "" }
+    input.validate = lambda { |p| p != "" };
+    input.responses[:not_valid] = "Venue cannot be empty."
   end
 
   def self.validate_location(input)
-    lambda { |p| p != "" }
+    input.validate = lambda { |p| p != "" };
+    input.responses[:not_valid] = "Enter location in City, ST format (example: Nashville, TN)"
   end
 
   def self.validate_rating(input)
-    lambda { |p| p.to_i.between?(1,10) }
+    input.validate = lambda { |p| p.to_i.between?(1,10) };
+    input.responses[:not_valid] = "Rating must be a number 1-10."
   end
 
 end
