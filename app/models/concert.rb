@@ -12,6 +12,15 @@ class Concert
     end
   end
 
+  def self.find(id)
+    row = Database.execute("select * from concerts where id = ?", id).first
+    if row.nil?
+      nil
+    else
+      populate_from_database(row)
+    end
+  end
+
   def self.count
     Database.execute("select count(id) from concerts")[0][0]
   end

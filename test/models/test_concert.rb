@@ -56,6 +56,25 @@ describe Concert do
     end
   end
 
+  describe "#find" do
+    let(:concert){Concert.new({:artist=>"Wilco", :concert_date=>"02/02/2000", :venue=>"The Ryman", :location=>"Nashville, TN", :rating=>"10"})}
+    before do
+      concert.save
+    end
+    describe "if there isn't a matching concert in the database" do
+      it "should return nil" do
+        assert_equal nil, Concert.find(14)
+      end
+    end
+    describe "if there is a matching concert in the database" do
+      it "should return the concert, populated with id and artist" do
+        actual = Concert.find(concert.id)
+        assert_equal concert.id, actual.id
+        assert_equal concert.artist, actual.artist
+      end
+    end
+  end
+
   describe ".save" do
     describe "if we want to save a concert to the database" do
       let(:concert){Concert.new({:artist=>"Wilco", :concert_date=>"02/02/2000", :venue=>"The Ryman", :location=>"Nashville, TN", :rating=>"10"})}
