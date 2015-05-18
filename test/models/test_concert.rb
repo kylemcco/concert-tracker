@@ -58,12 +58,16 @@ describe Concert do
 
   describe ".save" do
     describe "if we want to save a concert to the database" do
-      before do
-        concert = Concert.new({:artist=>"Wilco", :concert_date=>"02/02/2000", :venue=>"The Ryman", :location=>"Nashville, TN", :rating=>"10"})
-        concert.save
-      end
+      let(:concert){Concert.new({:artist=>"Wilco", :concert_date=>"02/02/2000", :venue=>"The Ryman", :location=>"Nashville, TN", :rating=>"10"})}
       it "should add a concert" do
+        concert.save
         assert_equal 1, Concert.count
+      end
+      it "should populate the model with id from the database" do
+        concert.save
+        last_row = Database.execute("SELECT * FROM concerts")[0]
+        database_id = last_row['id']
+        assert_equal database_id, concert.id
       end
     end
   end

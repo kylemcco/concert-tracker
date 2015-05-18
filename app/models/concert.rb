@@ -19,7 +19,7 @@ class Concert
   def save
     Database.execute("INSERT INTO concerts (artist, concert_date, venue, location, rating)
     VALUES (?, ?, ?, ?, ?)", artist, concert_date, venue, location, rating)
-    # @id = Database.execute("SELECT last_insert_rowid()")[0]['last_insert_rowid()']
+    @id = Database.execute("SELECT last_insert_rowid()")[0]['last_insert_rowid()']
   end
 
   def self.validate_artist(input)
