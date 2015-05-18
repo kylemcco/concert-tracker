@@ -4,7 +4,7 @@ describe Venue do
 
   describe ".initialize" do
     let(:venue){ Venue.new({:name=> "The Ryman", :city=>"Nashville", :state=>"TN"})}
-    it "sets concert attributes" do
+    it "sets venue attributes" do
       assert_equal "The Ryman", venue.name
       assert_equal "Nashville", venue.city
       assert_equal "TN", venue.state
@@ -19,9 +19,9 @@ describe Venue do
     end
     describe "if there are venues" do
       before do
-        Venue.new({:name=> "The Ryman", :city=>"Nashville", :state=>"TN"}.save
-        Venue.new({:name=> "Orange Peel", :city=>"Asheville", :state=>"SC"}.save
-        Venue.new({:name=> "Bijou Theater", :city=>"Knoxville", :state=>"TN"}.save
+        Venue.new({:name=> "The Ryman", :city=>"Nashville", :state=>"TN"}).save
+        Venue.new({:name=> "Orange Peel", :city=>"Asheville", :state=>"SC"}).save
+        Venue.new({:name=> "Bijou Theater", :city=>"Knoxville", :state=>"TN"}).save
       end
       it "should return the venues in alphabetical order" do
         expected = ["Bijou Theater", "Orange Peel", "The Ryman"]
@@ -44,9 +44,9 @@ describe Venue do
     end
     describe "if there are venues" do
       before do
-        Venue.new({:name=> "The Ryman", :city=>"Nashville", :state=>"TN"}.save
-        Venue.new({:name=> "Orange Peel", :city=>"Asheville", :state=>"SC"}.save
-        Venue.new({:name=> "Bijou Theater", :city=>"Knoxville", :state=>"TN"}.save
+        Venue.new({:name=> "The Ryman", :city=>"Nashville", :state=>"TN"}).save
+        Venue.new({:name=> "Orange Peel", :city=>"Asheville", :state=>"SC"}).save
+        Venue.new({:name=> "Bijou Theater", :city=>"Knoxville", :state=>"TN"}).save
       end
       it "should return the correct count" do
         assert_equal 3, Venue.count
@@ -65,7 +65,7 @@ describe Venue do
         venue.save
         last_row = Database.execute("SELECT * FROM venues")[0]
         database_id = last_row['id']
-        assert_equal database_id, concert.id
+        assert_equal database_id, venue.id
       end
     end
   end

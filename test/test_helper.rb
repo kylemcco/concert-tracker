@@ -15,6 +15,7 @@ class Minitest::Test
   def setup
     Database.load_structure
     Database.execute("DELETE FROM concerts;")
+    Database.execute("DELETE FROM venues;")
   end
 end
 
