@@ -1,6 +1,18 @@
 require_relative '../test_helper'
 
 describe Concert do
+
+  describe ".initialize" do
+    let(:concert){ Concert.new({:artist=>"Wilco", :concert_date=>"02/02/2000", :venue=>"The Ryman", :location=>"Nashville, TN", :rating=>"10"}) }
+    it "sets concert attributes" do
+      assert_equal "Wilco", concert.artist
+      assert_equal "02/02/2000", concert.concert_date
+      assert_equal "The Ryman", concert.venue
+      assert_equal "Nashville, TN", concert.location
+      assert_equal "10", concert.rating
+    end
+  end
+
   describe "#all" do
     describe "if there are no concerts in the database" do
       it "should return an empty array" do
