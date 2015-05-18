@@ -11,28 +11,15 @@ In order to catalog concerts attended I want to add concert data.
 
 Usage example:
 <pre><code>
-&gt; ./concert_tracker
+&gt; ./concert_tracker  
 1. Add a concert  
-2. Manage concerts
-3. View statistics
-4. Exit
+2. Manage concerts  
+3. View statistics  
+4. Exit  
 &gt; 1  
 Answer the following questions about the concert:  
-Who was the headlining act?  
+Who was the artist?  
 &gt; Wilco  
-Do you want to add a genre? (y/n)  
-&gt; y  
-1. Rock  
-2. Folk  
-3. Jazz  
-4. Other (add a genre)  
-&gt; 1  
-Were there any noteworthy openers? (y/n)  
-&gt; y  
-List the opening act(s), seperated by commas (KISS,Meatloaf)  
-&gt; Nick Lowe  
-Do you want to add a genre for Nick Lowe?  
-&gt; n  
 When was the concert? (mm/dd/yyyy)  
 &gt; 10/02/2011  
 What was the name of the venue?  
@@ -41,7 +28,7 @@ Where is the venue located? (city, ST)
 &gt; Nashville, TN  
 Rate your experience on a scale of one to ten (1-10)  
 &gt; 10  
-Cool! You saw Wilco play The Ryman in Nashville, TN on 10/02/2011. Nick Lowe opened. You gave this show a 10/10. Is that correct? (y/n)  
+Cool! You saw Wilco play The Ryman in Nashville, TN on 10/02/2011. You gave this show a 10/10. Is that correct? (y/n)  
 &gt; y  
 Concert saved.  
 </pre></code>
@@ -71,9 +58,8 @@ Usage example:
 3. St. Vincent  
 4. Wilco  
 &gt; 4  
-You saw Wilco play The Ryman in Nashville, TN on 10/02/2011. Nick Lowe opened. You gave this show a 10/10.  
-1. Edit headliner  
-2. Edit opening act(s)  
+You saw Wilco play The Ryman in Nashville, TN on 10/02/2011. You gave this show a 10/10.  
+1. Edit artist  
 3. Edit venue  
 4. Edit city/state  
 5. Edit rating  
@@ -83,14 +69,6 @@ You saw Wilco play The Ryman in Nashville, TN on 10/02/2011. Nick Lowe opened. Y
 Rate your experience on a scale of one to ten (1-10)  
 &gt; 7  
 Concert saved.  
-You saw Wilco play The Ryman in Nashville, TN on 10/02/2011. Nick Lowe opened. You gave this show a 6/10.  
-1. Edit headliner  
-2. Edit opening act(s)  
-3. Edit venue  
-4. Edit city/state  
-5. Edit rating  
-6. Exit  
-&gt; 6
 </pre></code>
 
 Acceptance criteria:  
@@ -118,9 +96,8 @@ Usage example:
 3. St. Vincent  
 4. Wilco  
 &gt; 4  
-You saw Wilco play The Ryman in Nashville, TN on 10/02/2011. Nick Lowe opened. You gave this show a 10/10.  
-1. Edit headliner  
-2. Edit opening act(s)  
+You saw Wilco play The Ryman in Nashville, TN on 10/02/2011. You gave this show a 10/10.  
+1. Edit artist
 3. Edit venue  
 4. Edit city/state  
 5. Edit rating  
