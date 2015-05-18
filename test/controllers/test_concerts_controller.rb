@@ -16,7 +16,7 @@ describe ConcertsController do
     let(:controller) {ConcertsController.new}
 
     it "should add a concert" do
-      controller.add({"artist"=>"Wilco", "concert_date"=>"02/02/2000", "venue"=>"The Ryman", "location"=>"Nashville, TN", "rating"=>"10"})
+      controller.add({:artist=>"Wilco", :concert_date=>"02/02/2000", :venue=>"The Ryman", :location=>"Nashville, TN", :rating=>"10"})
       assert_equal 1, Concert.count
     end
   end

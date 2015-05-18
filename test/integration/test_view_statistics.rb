@@ -54,8 +54,8 @@ class TestViewStatistics < MiniTest::Test
   end
 
   def test_viewing_statistics_multiple_concerts
-    add_concert({"artist"=>"Wilco", "concert_date"=>"02/02/2000", "venue"=>"The Ryman", "location"=>"Nashville, TN", "rating"=>"10"})
-    add_concert({"artist"=>"Neil Young", "concert_date"=>"02/02/2000", "venue"=>"The Ryman", "location"=>"Nashville, TN", "rating"=>"10"})
+    add_concert({:artist=>"Wilco", :concert_date=>"02/02/2000", :venue=>"The Ryman", :location=>"Nashville, TN", :rating=>"10"})
+    add_concert({:artist=>"Neil Young", :concert_date=>"02/02/2000", :venue=>"The Ryman", :location=>"Nashville, TN", :rating=>"10"})
     shell_output = ""
     expected_output = ""
     IO.popen('./concert_tracker', 'r+') do |pipe|

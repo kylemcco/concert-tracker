@@ -7,11 +7,11 @@ class Concert < Struct.new(:artist, :concert_date, :venue, :location, :rating)
 
   def initialize(attrs = nil)
     if !attrs.nil?
-      self.artist = attrs["artist"]
-      self.concert_date = attrs["concert_date"]
-      self.venue = attrs["venue"]
-      self.location = attrs["location"]
-      self.rating = attrs["rating"]
+      self.artist = attrs[:artist]
+      self.concert_date = attrs[:concert_date]
+      self.venue = attrs[:venue]
+      self.location = attrs[:location]
+      self.rating = attrs[:rating]
     end
   end
 
@@ -34,7 +34,7 @@ class Concert < Struct.new(:artist, :concert_date, :venue, :location, :rating)
 
   # def save
   #   Database.execute("INSERT INTO concerts (artist, concert_date, venue, location, rating)
-  #   VALUES (?, ?, ?, ?, ?)", concert_info["artist"], concert_info["concert_date"], concert_info["venue"], concert_info["location"], concert_info["rating"])
+  #   VALUES (?, ?, ?, ?, ?)", concert_info[:artist], concert_info[:concert_date], concert_info[:venue], concert_info[:location], concert_info[:rating])
   # end
 
   def self.validate_artist(input)

@@ -20,7 +20,7 @@ end
 
 def add_concert(concert_info)
   Database.execute("INSERT INTO concerts (artist, concert_date, venue, location, rating)
-  VALUES (?, ?, ?, ?, ?)", concert_info["artist"], concert_info["concert_date"], concert_info["venue"], concert_info["location"], concert_info["rating"])
+  VALUES (?, ?, ?, ?, ?)", concert_info[:artist], concert_info[:concert_date], concert_info[:venue], concert_info[:location], concert_info[:rating])
 end
 
 def main_menu
