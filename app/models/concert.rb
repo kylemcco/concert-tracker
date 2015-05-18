@@ -22,11 +22,6 @@ class Concert
     VALUES (?, ?, ?, ?, ?)", artist, concert_date, venue, location, rating)
   end
 
-  # def save
-  #   Database.execute("INSERT INTO concerts (artist, concert_date, venue, location, rating)
-  #   VALUES (?, ?, ?, ?, ?)", concert_info[:artist], concert_info[:concert_date], concert_info[:venue], concert_info[:location], concert_info[:rating])
-  # end
-
   def self.validate_artist(input)
     input.validate = lambda { |p| p != "" };
     input.responses[:not_valid] = "Headliner cannot be empty."
