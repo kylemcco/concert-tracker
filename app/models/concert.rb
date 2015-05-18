@@ -1,18 +1,8 @@
-class Concert < Struct.new(:artist, :concert_date, :venue, :location, :rating)
+class Concert
   attr_accessor :artist, :concert_date, :venue, :location, :rating
 
-  # def initialize(h = nil)
-  #     super(*h.values_at(:artist, :concert_date, :venue, :location, :rating))
-  # end
-
   def initialize(attrs = nil)
-    if !attrs.nil?
-      self.artist = attrs[:artist]
-      self.concert_date = attrs[:concert_date]
-      self.venue = attrs[:venue]
-      self.location = attrs[:location]
-      self.rating = attrs[:rating]
-    end
+    attrs.each {|key, value| send("#{key}=",value) } unless attrs.nil?
   end
 
   def self.all
