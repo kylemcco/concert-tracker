@@ -9,14 +9,19 @@ describe Concert do
     end
     describe "if there are concerts" do
       before do
-        add_concert({:artist=>"Wilco", :concert_date=>"02/02/2000", :venue=>"The Ryman", :location=>"Nashville, TN", :rating=>"10"})
-        add_concert({:artist=>"Andrew Bird", :concert_date=>"02/02/2000", :venue=>"The Ryman", :location=>"Nashville, TN", :rating=>"10"})
-        add_concert({:artist=>"Neil Young", :concert_date=>"02/02/2000", :venue=>"The Ryman", :location=>"Nashville, TN", :rating=>"10"})
+        Concert.new({:artist=>"Wilco", :concert_date=>"02/02/2000", :venue=>"The Ryman", :location=>"Nashville, TN", :rating=>"10"}).save
+        Concert.new({:artist=>"Andrew Bird", :concert_date=>"02/02/2000", :venue=>"The Ryman", :location=>"Nashville, TN", :rating=>"10"}).save
+        Concert.new({:artist=>"Neil Young", :concert_date=>"02/02/2000", :venue=>"The Ryman", :location=>"Nashville, TN", :rating=>"10"}).save
       end
       it "should return the concerts in alphabetical order" do
         expected = ["Andrew Bird", "Neil Young", "Wilco"]
         actual = Concert.all.map{ |concert| concert.artist }
         assert_equal expected, actual
+      end
+      it "populates the returned concerts' ids" do
+        expected_ids = Database.execute("SELECT id FROM concerts order by artist ASC").map{ |row| row['id'] }
+        actual_ids = Concert.all.map{ |concert| concert.id }
+        assert_equal expected_ids, actual_ids
       end
     end
   end

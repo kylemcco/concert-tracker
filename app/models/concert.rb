@@ -1,4 +1,5 @@
 class Concert
+  attr_reader :id
   attr_accessor :artist, :concert_date, :venue, :location, :rating
 
   def initialize(attrs = nil)
@@ -6,10 +7,8 @@ class Concert
   end
 
   def self.all
-    Database.execute("select artist from concerts order by artist ASC").map do |row|
-      concert = Concert.new
-      concert.artist = row[0]
-      concert
+    Database.execute("select * from concerts order by artist ASC").map do |row|
+      populate_from_database(row)
     end
   end
 
@@ -20,6 +19,7 @@ class Concert
   def save
     Database.execute("INSERT INTO concerts (artist, concert_date, venue, location, rating)
     VALUES (?, ?, ?, ?, ?)", artist, concert_date, venue, location, rating)
+    # @id = Database.execute("SELECT last_insert_rowid()")[0]['last_insert_rowid()']
   end
 
   def self.validate_artist(input)
@@ -45,6 +45,19 @@ class Concert
   def self.validate_rating(input)
     input.validate = lambda { |p| p.to_i.between?(1,10) };
     input.responses[:not_valid] = "Rating must be a number 1-10."
+  end
+
+  private
+
+  def self.populate_from_database(row)
+    concert = Concert.new
+    concert.artist = row['artist']
+    concert.concert_date = row['concert_date']
+    concert.venue = row['venue']
+    concert.location = row['location']
+    concert.rating = row['rating']
+    concert.instance_variable_set(:@id, row['id'])
+    concert
   end
 
 end
