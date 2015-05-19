@@ -15,18 +15,9 @@ class Venue
   def self.find_by_name(name)
     row = Database.execute("select * from venues where name = ?", name).first
     if row.nil?
-      []
+      nil
     else
       return row['id']
-    end
-  end
-
-  def exists?
-    row = Database.execute("select * from venues where name = ?", name).first
-    if row.nil?
-      false
-    else
-      true
     end
   end
 
@@ -35,7 +26,8 @@ class Venue
   end
 
   def save
-    unless exists?
+    results = Venue.find_by_name(name)
+    if results.nil?
       Database.execute("INSERT INTO venues (name, location)
       VALUES (?, ?)", name, location)
       @id = Database.execute("SELECT last_insert_rowid()")[0]['last_insert_rowid()']
