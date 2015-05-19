@@ -1,6 +1,6 @@
 class Venue
   attr_reader :id
-  attr_accessor :name, :city, :state
+  attr_accessor :name, :location
 
   def initialize(attrs = nil)
     attrs.each {|key, value| send("#{key}=",value) } unless attrs.nil?
@@ -12,14 +12,34 @@ class Venue
     end
   end
 
+  def self.find_by_name(name)
+    row = Database.execute("select * from venues where name = ?", name).first
+    if row.nil?
+      []
+    else
+      return row['id']
+    end
+  end
+
+  def exists?
+    row = Database.execute("select * from venues where name = ?", name).first
+    if row.nil?
+      false
+    else
+      true
+    end
+  end
+
   def self.count
     Database.execute("select count(id) from venues")[0][0]
   end
 
   def save
-    Database.execute("INSERT INTO venues (name, city, state)
-    VALUES (?, ?, ?)", name, city, state)
-    @id = Database.execute("SELECT last_insert_rowid()")[0]['last_insert_rowid()']
+    unless exists?
+      Database.execute("INSERT INTO venues (name, location)
+      VALUES (?, ?)", name, location)
+      @id = Database.execute("SELECT last_insert_rowid()")[0]['last_insert_rowid()']
+    end
   end
 
   def self.validate_venue(input)
@@ -37,8 +57,7 @@ class Venue
   def self.populate_from_database(row)
     venue = Venue.new
     venue.name = row['name']
-    venue.city = row['city']
-    venue.state = row['state']
+    venue.city = row['location']
     venue.instance_variable_set(:@id, row['id'])
     venue
   end

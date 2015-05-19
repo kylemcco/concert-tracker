@@ -8,8 +8,7 @@ class Database
       id integer PRIMARY KEY AUTOINCREMENT,
       artist varchar(255) NOT NULL,
       concert_date varchar(255) NOT NULL,
-      venue varchar(255) NOT NULL,
-      location varchar(255) NOT NULL,
+      venue_id varchar(255) NOT NULL,
       rating varchar(255) NOT NULL
     );
     SQL
@@ -18,8 +17,7 @@ class Database
     CREATE TABLE IF NOT EXISTS venues (
       id integer PRIMARY KEY AUTOINCREMENT,
       name varchar(255) NOT NULL,
-      city varchar(255) NOT NULL,
-      state varchar(255) NOT NULL
+      location varchar(255) NOT NULL
     );
     SQL
   end

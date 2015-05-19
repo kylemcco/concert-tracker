@@ -1,6 +1,6 @@
 class Concert
   attr_reader :id
-  attr_accessor :artist, :concert_date, :venue, :location, :rating
+  attr_accessor :artist, :concert_date, :venue_id, :rating
 
   def initialize(attrs = nil)
     attrs.each {|key, value| send("#{key}=",value) } unless attrs.nil?
@@ -26,8 +26,8 @@ class Concert
   end
 
   def save
-    Database.execute("INSERT INTO concerts (artist, concert_date, venue, location, rating)
-    VALUES (?, ?, ?, ?, ?)", artist, concert_date, venue, location, rating)
+    Database.execute("INSERT INTO concerts (artist, concert_date, venue_id, rating)
+    VALUES (?, ?, ?, ?)", artist, concert_date, venue_id, rating)
     @id = Database.execute("SELECT last_insert_rowid()")[0]['last_insert_rowid()']
   end
 
