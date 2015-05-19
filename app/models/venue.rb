@@ -42,7 +42,7 @@ class Venue
     end
   end
 
-  def self.validate_venue(input)
+  def self.validate_name(input)
     input.validate = lambda { |p| p != "" };
     input.responses[:not_valid] = "Venue cannot be empty."
   end

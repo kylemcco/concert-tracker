@@ -41,16 +41,6 @@ class Concert
     input.responses[:not_valid] = "Invalid date. Enter date in MM/DD/YYYY format."
   end
 
-  def self.validate_venue(input)
-    input.validate = lambda { |p| p != "" };
-    input.responses[:not_valid] = "Venue cannot be empty."
-  end
-
-  def self.validate_location(input)
-    input.validate = /^(.+)+,[ ]?[A-Za-z]{2}$/
-    input.responses[:not_valid] = "Enter location in City, ST format (example: Nashville, TN)."
-  end
-
   def self.validate_rating(input)
     input.validate = lambda { |p| p.to_i.between?(1,10) };
     input.responses[:not_valid] = "Rating must be a number 1-10."
