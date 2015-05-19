@@ -53,6 +53,24 @@ describe Venue do
     end
   end
 
+  describe ".find_by_name" do
+    let(:venue){Venue.new({:name=> "The Ryman", :location=>"Nashville, TN"})}
+    describe "if the venue exists in the database" do
+      it "should populate the model with id from the database" do
+        venue.save
+        last_row = Database.execute("SELECT * FROM venues")[0]
+        database_id = last_row['id']
+        assert_equal database_id, venue.id
+      end
+    end
+    describe "if the venue does not exist in the database" do
+      it "should return nil" do
+        venue.save
+        assert_equal nil, Venue.find_by_name("Exit In")
+      end
+    end
+  end
+
   describe ".save" do
     describe "if we want to save a venue to the database" do
       let(:venue){Venue.new({:name=> "The Ryman", :location=>"Nashville, TN"})}
