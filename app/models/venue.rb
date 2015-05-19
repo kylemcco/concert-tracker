@@ -49,7 +49,7 @@ class Venue
   def self.populate_from_database(row)
     venue = Venue.new
     venue.name = row['name']
-    venue.city = row['location']
+    venue.location = row['location']
     venue.instance_variable_set(:@id, row['id'])
     venue
   end
