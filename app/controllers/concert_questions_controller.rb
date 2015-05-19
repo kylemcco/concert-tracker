@@ -9,7 +9,7 @@ class ConcertQuestionsController
     venue_info[:name] = ask("What was the name of the venue?") { |i| Venue.validate_name(i) }
     venue_info[:location] = ask("Where is the venue located? (City, ST)") { |i| Venue.validate_location(i) }
     concert_info[:rating] = ask("Rate your experience on a scale of 1-10") { |i| Concert.validate_rating(i) }
-    confirmation = ask("Cool! You saw #{concert_info[:artist]} play #{concert_info[:venue]} in #{concert_info[:location]} on #{concert_info[:concert_date]}. You gave this show a #{concert_info[:rating]}. Is that correct? (y/n)")
+    confirmation = ask("Cool! You saw #{concert_info[:artist]} play #{venue_info[:name]} in #{venue_info[:location]} on #{concert_info[:concert_date]}. You gave this show a #{concert_info[:rating]}. Is that correct? (y/n)")
     if confirmation == "y"
       puts "Concert saved"
       venues_controller = VenuesController.new

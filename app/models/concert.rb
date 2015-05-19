@@ -52,8 +52,7 @@ class Concert
     concert = Concert.new
     concert.artist = row['artist']
     concert.concert_date = row['concert_date']
-    concert.venue = row['venue']
-    concert.location = row['location']
+    concert.venue_id = row['venue_id']
     concert.rating = row['rating']
     concert.instance_variable_set(:@id, row['id'])
     concert
