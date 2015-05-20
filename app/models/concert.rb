@@ -37,8 +37,9 @@ class Concert
   end
 
   def self.validate_date(input)
-    input.validate = /(0[1-9]|1[012])[- \/](0[1-9]|[12][0-9]|3[01])[- \/](19|20)\d\d/;
-    input.responses[:not_valid] = "Invalid date. Enter date in MM/DD/YYYY format."
+    # input.validate = /(0[1-9]|1[012])[- \/](0[1-9]|[12][0-9]|3[01])[- \/](19|20)\d\d/;
+    input.validate = /^(19|20)\d\d[- .](0[1-9]|1[012])[- .](0[1-9]|[12][0-9]|3[01])$/;
+    input.responses[:not_valid] = "Invalid date. Enter date in YYYY/MM/DD format."
   end
 
   def self.validate_rating(input)
