@@ -3,10 +3,10 @@ require_relative '../test_helper'
 describe Venue do
 
   describe ".initialize" do
-    let(:venue){ Venue.new({:name=> "The Ryman", :location=>"Nashville, TN"})}
+    let(:venue){ Venue.new({:name=> "The Ryman", :city=>"Nashville"})}
     it "sets venue attributes" do
       assert_equal "The Ryman", venue.name
-      assert_equal "Nashville, TN", venue.location
+      assert_equal "Nashville", venue.city
     end
   end
 
@@ -18,9 +18,9 @@ describe Venue do
     end
     describe "if there are venues" do
       before do
-        Venue.new({:name=> "The Ryman", :location=>"Nashville, TN"}).save
-        Venue.new({:name=> "Orange Peel", :location=>"Asheville, SC"}).save
-        Venue.new({:name=> "Bijou Theater", :location=>"Knoxville, TN"}).save
+        Venue.new({:name=> "The Ryman", :city=>"Nashville"}).save
+        Venue.new({:name=> "Orange Peel", :city=>"Asheville"}).save
+        Venue.new({:name=> "Bijou Theater", :city=>"Knoxville"}).save
       end
       it "should return the venues in alphabetical order" do
         expected = ["Bijou Theater", "Orange Peel", "The Ryman"]
@@ -43,9 +43,9 @@ describe Venue do
     end
     describe "if there are venues" do
       before do
-        Venue.new({:name=> "The Ryman", :location=>"Nashville, TN"}).save
-        Venue.new({:name=> "Orange Peel", :location=>"Asheville, SC"}).save
-        Venue.new({:name=> "Bijou Theater", :location=>"Knoxville, TN"}).save
+        Venue.new({:name=> "The Ryman", :city=>"Nashville"}).save
+        Venue.new({:name=> "Orange Peel", :city=>"Asheville"}).save
+        Venue.new({:name=> "Bijou Theater", :city=>"Knoxville"}).save
       end
       it "should return the correct count" do
         assert_equal 3, Venue.count
@@ -54,7 +54,7 @@ describe Venue do
   end
 
   describe ".find_by_name" do
-    let(:venue){Venue.new({:name=> "The Ryman", :location=>"Nashville, TN"})}
+    let(:venue){Venue.new({:name=> "The Ryman", :city=>"Nashville"})}
     describe "if the venue exists in the database" do
       it "should populate the model with id from the database" do
         venue.save
@@ -73,7 +73,7 @@ describe Venue do
 
   describe ".save" do
     describe "if we want to save a venue to the database" do
-      let(:venue){Venue.new({:name=> "The Ryman", :location=>"Nashville, TN"})}
+      let(:venue){Venue.new({:name=> "The Ryman", :city=>"Nashville"})}
       it "should add a venue" do
         venue.save
         assert_equal 1, Venue.count

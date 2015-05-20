@@ -17,7 +17,9 @@ class Database
     CREATE TABLE IF NOT EXISTS venues (
       id integer PRIMARY KEY AUTOINCREMENT,
       name varchar(255) NOT NULL,
-      location varchar(255) NOT NULL
+      city varchar(255) NOT NULL,
+      state varchar(255),
+      country varchar(255)
     );
     SQL
   end
