@@ -51,8 +51,8 @@ end
 
 describe "managing a concert" do
   before do
-    Concert.new({:artist=>"St. Vincent",:concert_date=>"2010-10-02",:venue_id=>"2",rating="8"}).save
-    Concert.new({:artist=>"Wilco",:concert_date=>"2011-10-02",:venue_id=>"1",rating="10"}).save
+    Concert.new({:artist=>"St. Vincent",:concert_date=>"2010-10-02",:venue_id=>"2",rating=>"8"}).save
+    Concert.new({:artist=>"Wilco",:concert_date=>"2011-10-02",:venue_id=>"1",rating=>"10"}).save
   end
 
   describe "when a user updates a concert rating" do
@@ -61,6 +61,4 @@ describe "managing a concert" do
       assert_equal 7, Concert.find(2).rating
     end
   end
-end
-
 end

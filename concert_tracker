@@ -8,7 +8,7 @@ def print_error_message
   puts "[Help] Run as: ./concert_tracker"
 end
 
-if ARGV.size == 0
+def main_menu_prompt
   loop do
     choose do |menu|
       menu.prompt = ""

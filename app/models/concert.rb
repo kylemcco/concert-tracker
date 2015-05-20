@@ -26,14 +26,22 @@ class Concert
   end
 
   def save
-    Database.execute("INSERT INTO concerts (artist, concert_date, venue_id, rating)
-    VALUES (?, ?, ?, ?)", artist, concert_date, venue_id, rating)
-    @id = Database.execute("SELECT last_insert_rowid()")[0]['last_insert_rowid()']
+    if @id.nil?
+      Database.execute("INSERT INTO concerts (artist, concert_date, venue_id, rating)
+      VALUES (?, ?, ?, ?)", artist, concert_date, venue_id, rating)
+      @id = Database.execute("SELECT last_insert_rowid()")[0]['last_insert_rowid()']
+    else
+      Database.execute("UPDATE concerts SET artist=?, concert_date=?, venue_id=?, rating=? WHERE id=?", artist, concert_date, venue_id, rating, id)
+    end
+  end
+
+  def delete
+    Database.execute("DELETE FROM concerts WHERE artist=?", artist)
   end
 
   def self.validate_artist(input)
     input.validate = lambda { |p| p != "" };
-    input.responses[:not_valid] = "Headliner cannot be empty."
+    input.responses[:not_valid] = "Artist cannot be empty."
   end
 
   def self.validate_date(input)
