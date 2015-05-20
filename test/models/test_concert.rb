@@ -103,4 +103,17 @@ describe Concert do
     end
   end
 
+  describe ".delete" do
+    describe "if we delete a concert" do
+      let(:concert){Concert.new({:artist=>"Wilco", :concert_date=>"2000-02-02", :venue_id=>"1", :rating=>"10"})}
+      it "deletes from the database" do
+        concert.save
+        assert_equal 1, Concert.count
+        concert.delete
+        assert_equal 0, Concert.count
+      end
+    end
+  end
+
+
 end
