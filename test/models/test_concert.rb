@@ -98,6 +98,7 @@ describe Concert do
         updated_concert = Concert.find(concert.id)
         assert_equal updated_concert.artist, "not Wilco"
         assert_equal updated_concert.id, concert.id
+        assert_equal 1, Concert.count
       end
     end
   end
