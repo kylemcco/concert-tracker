@@ -5,7 +5,7 @@ class ConcertQuestionsController
     venue_info = Hash.new
     say("Answer the following questions about the concert:\n")
     concert_info[:artist] = ask("Who was the artist?") { |i| Concert.validate_artist(i) }
-    concert_info[:concert_date] = ask("When was the concert? (mm/dd/yyyy)") { |i| Concert.validate_date(i) }
+    concert_info[:concert_date] = ask("When was the concert? (YYYY-MM-DD)") { |i| Concert.validate_date(i) }
     venue_info[:name] = ask("What was the name of the venue?") { |i| Venue.validate_name(i) }
     venue = Venue.find_by_name(venue_info[:name])
     if venue.nil?

@@ -5,7 +5,7 @@ class AddingANewConcertTest < Minitest::Test
     shell_output = ""
     expected_output = main_menu
     test_artist = "Wilco"
-    test_concert_date = "02/02/2000"
+    test_concert_date = "2000-02-02"
     test_venue = "The Ryman"
     test_city = "Nashville"
     test_state = "TN"
@@ -16,7 +16,7 @@ class AddingANewConcertTest < Minitest::Test
       expected_output << "Answer the following questions about the concert:\n"
       expected_output << "Who was the artist?\n"
       pipe.puts test_artist
-      expected_output << "When was the concert? (mm/dd/yyyy)\n"
+      expected_output << "When was the concert? (YYYY-MM-DD)\n"
       pipe.puts test_concert_date
       expected_output << "What was the name of the venue?\n"
       pipe.puts test_venue
