@@ -18,7 +18,10 @@ if ARGV.size == 0
         say(concert_questions_controller.ask_questions)
         exit
       }
-      menu.choice('Manage concerts') { say("") }
+      menu.choice('Manage concerts') {
+        say(concerts_controller.list)
+        exit
+      }
       menu.choice('View statistics') {
         say(concerts_controller.index)
         exit
@@ -29,6 +32,10 @@ if ARGV.size == 0
       }
     end
   end
+end
+
+if ARGV.size == 0
+  main_menu_prompt
 else
   print_error_message
 end

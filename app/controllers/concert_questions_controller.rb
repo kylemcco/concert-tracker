@@ -24,12 +24,13 @@ class ConcertQuestionsController
     venue = Venue.find_by_name(venue_info[:name])
     confirmation = ask("Cool! You saw #{concert_info[:artist]} play #{venue.name} in #{venue.city} on #{concert_info[:concert_date]}. You gave this show a #{concert_info[:rating]}. Is that correct? (y/n)")
     if confirmation == "y"
-      puts "Concert saved"
+      puts "Concert saved\n"
       concert_info[:venue_id] = venue.id
       concerts_controller = ConcertsController.new
       concerts_controller.add(concert_info)
+      concerts_controller.list
     else
-      puts "Let's try again"
+      main_menu_prompt
     end
   end
 
