@@ -51,21 +51,20 @@ Usage example:
 4. Exit  
 &gt; 2  
 1. List chronologically  
-2. List alphabetically  
+2. List alphabetically by artist
 &gt; 2  
 1. Animal Collective  
 2. My Morning Jacket  
 3. St. Vincent  
 4. Wilco  
 &gt; 4  
-You saw Wilco play The Ryman in Nashville, TN on 10/02/2011. You gave this show a 10/10.  
+You saw Wilco play The Ryman in Nashville, TN on 2011-10-02. You gave this show a 10/10.  
 1. Edit artist  
-3. Edit venue  
-4. Edit city/state  
-5. Edit rating  
-6. Delete concert  
-7. Exit  
-&gt; 5  
+2. Edit venue
+3. Edit rating  
+4. Delete concert  
+5. Exit  
+&gt; 3  
 Rate your experience on a scale of one to ten (1-10)  
 &gt; 7  
 Concert saved.  
