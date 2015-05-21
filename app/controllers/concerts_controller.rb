@@ -39,17 +39,17 @@ class ConcertsController
           loop do
             choose do |submenu|
               submenu.choice("Edit artist"){
-                concert.artist = ask("Who was the artist?"){|i| Concert.validate_artist(i)}
+                concert.artist = Concert.validate_artist
                 concert.save
                 say("Artist updated to #{concert.artist}\n")
               }
-              submenu.choice("Edit concert_date"){
-                concert.concert_date = ask("When was the concert? (YYYY-MM-DD)") { |i| Concert.validate_date(i) }
+              submenu.choice("Edit concert date"){
+                concert.concert_date = Concert.validate_date
                 concert.save
                 say("Date updated to #{concert.concert_date}\n")
               }
               submenu.choice("Edit rating"){
-                concert.rating = ask("Rate your experience on a scale of 1-10") { |i| Concert.validate_rating(i) }
+                concert.rating = Concert.validate_rating
                 concert.save
                 say("Rating updated to #{concert.rating}\n")
               }
