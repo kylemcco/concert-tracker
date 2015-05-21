@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 require 'highline/import'
 require 'date'
+require 'active_record'
 Dir["./app/**/*.rb"].each { |f| require f }
 Dir["./lib/*.rb"].each { |f| require f }
 
