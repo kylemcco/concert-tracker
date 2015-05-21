@@ -12,6 +12,29 @@ describe Concert do
     end
   end
 
+  describe ".valid?" do
+    describe "with no artist" do
+      let(:concert){ Concert.new({:artist=>nil, :concert_date=>"2000-02-02"}) }
+      it "returns false" do
+        refute concert.valid?
+      end
+      it "sets the error message if artist is blank" do
+        concert.valid?
+        assert_includes concert.errors.full_messages, "Artist can't be blank"
+      end
+    end
+    describe "with no concert" do
+      let(:concert){ Concert.new({:artist=>"Wilco", :concert_date=>nil}) }
+      it "returns false" do
+        refute concert.valid?
+      end
+      it "sets the error message if artist is blank" do
+        concert.valid?
+        assert_includes concert.errors.full_messages, "Concert date must follow YYYY-MM-DD format"
+      end
+    end
+  end
+
   describe "#all" do
     describe "if there are no concerts in the database" do
       it "returns an empty array" do
@@ -51,25 +74,6 @@ describe Concert do
       end
       it "returns the correct count" do
         assert_equal 3, Concert.count
-      end
-    end
-  end
-
-  describe "#find" do
-    let(:concert){Concert.new({:artist=>"Wilco", :concert_date=>"2000-02-02", :venue_id=>"1", :rating=>"10"})}
-    before do
-      concert.save
-    end
-    describe "if there isn't a matching concert in the database" do
-      it "returns nil" do
-        assert_equal nil, Concert.find(14)
-      end
-    end
-    describe "if there is a matching concert in the database" do
-      it "returns the concert, populated with id and artist" do
-        actual = Concert.find(concert.id)
-        assert_equal concert.id, actual.id
-        assert_equal concert.artist, actual.artist
       end
     end
   end
