@@ -31,6 +31,13 @@ class AddingANewConcertTest < Minitest::Test
       expected_output << "Cool! You saw #{test_artist} play #{test_venue} in #{test_city} on #{test_concert_date}. You gave this show a #{test_rating}. Is that correct? (y/n)\n"
       pipe.puts "y"
       expected_output << "Concert saved\n"
+      expected_output << "Your concerts:\n"
+      expected_output << "1. #{test_artist} (#{test_concert_date})\n"
+      expected_output << "2. Go back\n"
+      pipe.puts "2"
+      expected_output << main_menu
+      pipe.puts "4"
+      expected_output << "Welp, seeya later\n"
       shell_output = pipe.read
       pipe.close_write
       pipe.close_read

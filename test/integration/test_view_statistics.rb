@@ -54,15 +54,15 @@ class TestViewStatistics < MiniTest::Test
   end
 
   def test_viewing_statistics_multiple_concerts
-    Concert.new({:artist=>"Wilco", :concert_date=>"02/02/2000", :venue_id=>"1", :rating=>"10"}).save
-    Concert.new({:artist=>"Neil Young", :concert_date=>"02/02/2000", :venue_id=>"1", :rating=>"10"}).save
+    Concert.new({:artist=>"Wilco", :concert_date=>"1998-02-03", :venue_id=>"1", :rating=>"10"}).save
+    Concert.new({:artist=>"Neil Young", :concert_date=>"2000-02-02", :venue_id=>"1", :rating=>"10"}).save
     shell_output = ""
     expected_output = ""
     IO.popen('./concert_tracker', 'r+') do |pipe|
       expected_output << main_menu
       pipe.puts "3" # View statistics
-      expected_output << "1. Neil Young\n"
-      expected_output << "2. Wilco\n"
+      expected_output << "1. Neil Young on 2000-02-02\n"
+      expected_output << "2. Wilco on 1998-02-03\n"
       pipe.close_write
       shell_output = pipe.read
     end
