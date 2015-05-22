@@ -7,7 +7,7 @@ class ConcertQuestionsController
     concert_info[:artist] = Concert.validate_artist
     concert_info[:concert_date] = Concert.validate_date
     venue_info[:name] = Venue.validate_name
-    venue = Venue.find_by_name(venue_info[:name])
+    venue = Venue.find_by name: venue_info[:name]
     if venue.nil?
       ask_venue_questions(venue_info)
     else
@@ -21,7 +21,7 @@ class ConcertQuestionsController
       end
     end
     concert_info[:rating] = Concert.validate_rating
-    venue = Venue.find_by_name(venue_info[:name])
+    venue = Venue.find_by name: venue_info[:name]
     confirmation = ask("Cool! You saw #{concert_info[:artist]} play #{venue.name} in #{venue.city} on #{concert_info[:concert_date]}. You gave this show a #{concert_info[:rating]}. Is that correct? (y/n)")
     if confirmation == "y"
       puts "Concert saved\n"

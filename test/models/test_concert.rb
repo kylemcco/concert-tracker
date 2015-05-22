@@ -60,24 +60,6 @@ describe Concert do
     end
   end
 
-  describe "#count" do
-    describe "if there are no concerts in the database" do
-      it "returns 0" do
-        assert_equal 0, Concert.count
-      end
-    end
-    describe "if there are concerts" do
-      before do
-        Concert.new({:artist=>"Wilco", :concert_date=>"2000-02-02", :venue_id=>"1", :rating=>"10"}).save
-        Concert.new({:artist=>"Andrew Bird", :concert_date=>"2000-02-02", :venue_id=>"1", :rating=>"10"}).save
-        Concert.new({:artist=>"Neil Young", :concert_date=>"2000-02-02", :venue_id=>"2", :rating=>"10"}).save
-      end
-      it "returns the correct count" do
-        assert_equal 3, Concert.count
-      end
-    end
-  end
-
   describe ".save" do
     describe "if we save a new concert to the database" do
       let(:concert){Concert.new({:artist=>"Wilco", :concert_date=>"2000-02-02", :venue_id=>"1", :rating=>"10"})}
@@ -118,6 +100,5 @@ describe Concert do
       end
     end
   end
-
 
 end
