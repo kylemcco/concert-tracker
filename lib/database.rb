@@ -9,7 +9,8 @@ class Database
       artist varchar(255) NOT NULL,
       concert_date varchar(255) NOT NULL,
       venue_id varchar(255) NOT NULL,
-      rating varchar(255) NOT NULL
+      rating varchar(255) NOT NULL,
+      FOREIGN KEY (venue_id) REFERENCES venues(id)
     );
     SQL
 
