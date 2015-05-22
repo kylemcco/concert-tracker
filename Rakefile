@@ -13,5 +13,6 @@ end
 desc 'bootstrap database structure'
 task :bootstrap_database do
   require_relative 'lib/database'
+  require_relative 'lib/environment'
   Database.load_structure
 end
