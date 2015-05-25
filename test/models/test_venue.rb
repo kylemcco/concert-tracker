@@ -10,6 +10,81 @@ describe Venue do
     end
   end
 
+  describe ".valid?" do
+    describe "with no name provided" do
+      let(:venue){ Venue.create(name: nil) }
+      it "returns false" do
+        refute venue.valid?
+      end
+      it "sets the error message if name is nil" do
+        venue.valid?
+        assert_equal ["can't be blank"], venue.errors[:name]
+      end
+    end
+    describe "with no city provided" do
+      let(:venue){ Venue.create(city: nil) }
+      it "returns false" do
+        refute venue.valid?
+      end
+      it "sets the error message if city is nil" do
+        venue.valid?
+        assert_equal ["can't be blank", "must only contain letters, spaces and dashes"], venue.errors[:city]
+      end
+    end
+    describe "with illegal characters in city" do
+      let(:venue){ Venue.create(city: "Nas@#hville!") }
+      it "returns false" do
+        refute venue.valid?
+      end
+      it "sets the error message if city contains illegal characters" do
+        venue.valid?
+        assert_equal ["must only contain letters, spaces and dashes"], venue.errors[:city]
+      end
+    end
+    describe "with illegal characters in state" do
+      let(:venue){ Venue.create(state: "?N") }
+      it "returns false" do
+        refute venue.valid?
+      end
+      it "sets the error message if state contains illegal characters" do
+        venue.valid?
+        assert_equal ["must only contain letters"], venue.errors[:state]
+      end
+    end
+    describe "with no state provided" do
+      let(:venue){ Venue.create(name: "The Ryman", city: "Nashville") }
+      it "returns true" do
+        assert venue.valid?
+      end
+    end
+    describe "with too many characters in state" do
+      let(:venue){ Venue.create(state: "Tennessee") }
+      it "returns false" do
+        refute venue.valid?
+      end
+      it "sets the error message if state contains too many characters" do
+        venue.valid?
+        assert_equal ["is the wrong length (should be 2 characters)"], venue.errors[:state]
+      end
+    end
+    describe "with no country provided" do
+      let(:venue){ Venue.create(name: "The Ryman", city: "Nashville") }
+      it "returns true" do
+        assert venue.valid?
+      end
+    end
+    describe "with illegal characters in country" do
+      let(:venue){ Venue.create(country: "US@#A!") }
+      it "returns false" do
+        refute venue.valid?
+      end
+      it "sets the error message if country contains illegal characters" do
+        venue.valid?
+        assert_equal ["must only contain letters, spaces and dashes"], venue.errors[:country]
+      end
+    end
+  end
+
   describe "#all" do
     describe "if there are no venues in the database" do
       it "should return an empty array" do
@@ -18,9 +93,9 @@ describe Venue do
     end
     describe "if there are venues" do
       before do
-        Venue.new({:name=> "The Ryman", :city=>"Nashville"}).save
-        Venue.new({:name=> "Orange Peel", :city=>"Asheville"}).save
-        Venue.new({:name=> "Bijou Theater", :city=>"Knoxville"}).save
+        Venue.new({:name=>"The Ryman", :city=>"Nashville"}).save
+        Venue.new({:name=>"Orange Peel", :city=>"Asheville"}).save
+        Venue.new({:name=>"Bijou Theater", :city=>"Knoxville"}).save
       end
       it "should return the venues in alphabetical order" do
         expected = ["Bijou Theater", "Orange Peel", "The Ryman"]
@@ -43,30 +118,12 @@ describe Venue do
     end
     describe "if there are venues" do
       before do
-        Venue.new({:name=> "The Ryman", :city=>"Nashville"}).save
-        Venue.new({:name=> "Orange Peel", :city=>"Asheville"}).save
-        Venue.new({:name=> "Bijou Theater", :city=>"Knoxville"}).save
+        Venue.new({:name=>"The Ryman", :city=>"Nashville"}).save
+        Venue.new({:name=>"Orange Peel", :city=>"Asheville"}).save
+        Venue.new({:name=>"Bijou Theater", :city=>"Knoxville"}).save
       end
       it "should return the correct count" do
         assert_equal 3, Venue.count
-      end
-    end
-  end
-
-  describe ".find_by_name" do
-    let(:venue){Venue.new({:name=> "The Ryman", :city=>"Nashville"})}
-    describe "if the venue exists in the database" do
-      it "should populate the model with id from the database" do
-        venue.save
-        last_row = Database.execute("SELECT * FROM venues")[0]
-        database_id = last_row['id']
-        assert_equal database_id, venue.id
-      end
-    end
-    describe "if the venue does not exist in the database" do
-      it "should return nil" do
-        venue.save
-        assert_equal nil, Venue.find_by_name("Exit In")
       end
     end
   end

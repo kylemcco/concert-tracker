@@ -2,8 +2,12 @@ class Concert < ActiveRecord::Base
   validates :artist,
     presence: true
   validates :concert_date,
-    presence: {},
-    format: { with: /(19|20)\d\d[- .](0[1-9]|1[012])[- .](0[1-9]|[12][0-9]|3[01])/, message: "must follow YYYY-MM-DD format" }
+    presence: true,
+    format: { with: /(19|20)\d\d[- .](0[1-9]|1[012])[- .](0[1-9]|[12][0-9]|3[01])/,
+      message: "must follow YYYY-MM-DD format"}
+  validates :rating,
+    presence: true,
+    numericality: { :greater_than=>0, :less_than_or_equal_to=>10}
 
   default_scope { order("artist ASC") }
 

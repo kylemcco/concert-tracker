@@ -14,23 +14,53 @@ describe Concert do
 
   describe ".valid?" do
     describe "with no artist" do
-      let(:concert){ Concert.new({:artist=>nil, :concert_date=>"2000-02-02"}) }
+      let(:concert){ Concert.create(artist: nil) }
       it "returns false" do
         refute concert.valid?
       end
       it "sets the error message if artist is blank" do
         concert.valid?
-        assert_includes concert.errors.full_messages, "Artist can't be blank"
+        assert_equal ["can't be blank"], concert.errors[:artist]
       end
     end
-    describe "with no concert" do
-      let(:concert){ Concert.new({:artist=>"Wilco", :concert_date=>nil}) }
+    describe "with no concert date" do
+      let(:concert){ Concert.create(concert_date: nil) }
       it "returns false" do
         refute concert.valid?
       end
-      it "sets the error message if artist is blank" do
+      it "sets the error message if concert date is blank" do
         concert.valid?
-        assert_includes concert.errors.full_messages, "Concert date must follow YYYY-MM-DD format"
+        assert_equal ["can't be blank", "must follow YYYY-MM-DD format"], concert.errors[:concert_date]
+      end
+    end
+    describe "with incorrectly formatted concert date" do
+      let(:concert){ Concert.create(concert_date: "2000/02/01") }
+      it "returns false" do
+        refute concert.valid?
+      end
+      it "sets the error message if concert date is incorrectly formatted" do
+        concert.valid?
+        assert_equal ["must follow YYYY-MM-DD format"], concert.errors[:concert_date]
+      end
+    end
+    describe "with no rating" do
+      let(:concert){ Concert.create(rating: nil) }
+      it "returns false" do
+        refute concert.valid?
+      end
+      it "sets the error message if rating is incorrectly formatted" do
+        concert.valid?
+        assert_equal ["can't be blank", "is not a number"], concert.errors[:rating]
+      end
+    end
+    describe "with incorrectly formatted rating" do
+      let(:concert){ Concert.create(rating: 11) }
+      it "returns false" do
+        refute concert.valid?
+      end
+      it "sets the error message if rating is incorrectly formatted" do
+        concert.valid?
+        assert_equal ["must be less than or equal to 10"], concert.errors[:rating]
       end
     end
   end

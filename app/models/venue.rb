@@ -1,13 +1,27 @@
 class Venue < ActiveRecord::Base
   validates :name,
     presence: true
+  validates :city,
+    presence: true,
+    format: { with: /^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/, multiline: true, message: "must only contain letters, spaces and dashes" },
+    length: { maximum: 100 }
+  validates :state,
+    allow_blank: true,
+    allow_nil: true,
+    format: {with: /[a-zA-Z]{2}/, message: "must only contain letters"},
+    length: { is: 2 }
+  validates :country,
+    allow_blank: true,
+    allow_nil: true,
+    format: { with: /^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/, multiline: true, message: "must only contain letters, spaces and dashes" },
+      length: { maximum: 100 }
 
   default_scope { order("name ASC") }
 
   def self.validate_name
     ask("What was the name of the venue?") { |i|
-      i.validate = lambda { |p| p != "" };
-      i.responses[:not_valid] = "Venue cannot be empty."
+      i.validate = /[a-zA-Z]/;
+      i.responses[:not_valid] = "Name must contain at least one letter."
     }
   end
 
